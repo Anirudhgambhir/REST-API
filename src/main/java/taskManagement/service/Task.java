@@ -1,6 +1,7 @@
 package taskManagement.service;
 
 import lombok.Getter;
+import taskManagement.validator.Validator;
 import taskManagement.validator.impl.TaskUpdateValidatorImpl;
 
 import java.time.Instant;
@@ -15,7 +16,7 @@ public class Task {
     private final boolean completed;
 
 
-    private final TaskUpdateValidatorImpl validator = new TaskUpdateValidatorImpl();
+    private final Validator<TaskUpdate> validator = new TaskUpdateValidatorImpl();
 
 
     private Task(TaskBuilder builder){
