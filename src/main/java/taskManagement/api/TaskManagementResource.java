@@ -1,11 +1,13 @@
 package taskManagement.api;
 
+import lombok.RequiredArgsConstructor;
 import taskManagement.service.Task;
 import taskManagement.service.TaskManagementService;
 import taskManagement.service.TaskUpdate;
 import taskManagement.validator.Validator;
 import taskManagement.validator.impl.ObjectValidatorImpl;
 
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -17,22 +19,17 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.net.URI;
-import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor(onConstructor = @__(@Inject))
 @Path("/tasks")
 public class TaskManagementResource {
 
     private final TaskManagementService service;
 
-    public TaskManagementResource(TaskManagementService service) {
-        this.service = service;
-    }
-
     private final static Validator<Object> validator = new ObjectValidatorImpl();
 
-    //TODO Implementation to be added as per API request
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createTask(TaskCreateRequest taskCreateRequest) {

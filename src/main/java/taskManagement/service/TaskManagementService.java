@@ -1,15 +1,13 @@
 package taskManagement.service;
 
+import lombok.RequiredArgsConstructor;
 import taskManagement.exceptions.TaskNotFoundException;
 
+import javax.inject.Inject;
 import java.util.List;
-
+@RequiredArgsConstructor(onConstructor = @__(@Inject))
 public class TaskManagementService {
     private final TaskManagementRepository repository;
-
-    public TaskManagementService(TaskManagementRepository repository) {
-        this.repository = repository;
-    }
 
     public Task create(String title, String description)  {
         Task task = Task.builder(title, description).build();
