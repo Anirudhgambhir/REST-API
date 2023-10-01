@@ -8,5 +8,6 @@ import javax.ws.rs.ApplicationPath;
 public class ApplicationConfig extends ResourceConfig {
     public ApplicationConfig() {
         register(TaskManagementResource.class);
+        register(JsonObjectMapperProvider.class);
     }
 }

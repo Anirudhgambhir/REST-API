@@ -4,14 +4,12 @@ import org.apache.commons.lang3.Validate;
 import taskManagement.exceptions.InvalidRequestException;
 import taskManagement.validator.Validator;
 
-import java.time.Instant;
-
-public class InstantValidatorImpl implements Validator<Instant> {
+public class ObjectValidatorImpl implements Validator<Object> {
 
     @Override
-    public void validate(Instant input) {
+    public void validate(Object input) {
         try {
-            Validate.notNull(input, "Time Input should not be null");
+            Validate.notNull(input, "Object should not be null");
         }catch (Exception e) {
             throw new InvalidRequestException(e.getMessage());
         }
