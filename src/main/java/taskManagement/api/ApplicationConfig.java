@@ -6,6 +6,8 @@ import org.glassfish.hk2.api.ServiceLocator;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.jvnet.hk2.guice.bridge.api.GuiceBridge;
 import org.jvnet.hk2.guice.bridge.api.GuiceIntoHK2Bridge;
+import taskManagement.exceptions.mapper.InvalidRequestExceptionMapper;
+import taskManagement.exceptions.mapper.TaskNotFoundExceptionMapper;
 import taskManagement.guice.ApplicationModule;
 
 import javax.inject.Inject;
@@ -18,6 +20,8 @@ public class ApplicationConfig extends ResourceConfig {
     public ApplicationConfig(ServiceLocator serviceLocator) {
         register(TaskManagementResource.class);
         register(JsonObjectMapperProvider.class);
+        register(InvalidRequestExceptionMapper.class);
+        register(TaskNotFoundExceptionMapper.class);
 
         // bridge the Guice container (Injector) into the HK2 container (ServiceLocator)
         Injector injector = Guice.createInjector(new ApplicationModule());
