@@ -9,6 +9,8 @@ import org.jvnet.hk2.guice.bridge.api.GuiceIntoHK2Bridge;
 import taskManagement.exceptions.mapper.InvalidRequestExceptionMapper;
 import taskManagement.exceptions.mapper.TaskNotFoundExceptionMapper;
 import taskManagement.guice.ApplicationModule;
+import taskManagement.guice.MongoDBModule;
+
 
 import javax.inject.Inject;
 import javax.ws.rs.ApplicationPath;
@@ -24,7 +26,7 @@ public class ApplicationConfig extends ResourceConfig {
         register(TaskNotFoundExceptionMapper.class);
 
         // bridge the Guice container (Injector) into the HK2 container (ServiceLocator)
-        Injector injector = Guice.createInjector(new ApplicationModule());
+        Injector injector = Guice.createInjector(new MongoDBModule(), new ApplicationModule());
         GuiceBridge.getGuiceBridge().initializeGuiceBridge(serviceLocator);
         GuiceIntoHK2Bridge guiceBridge = serviceLocator.getService(GuiceIntoHK2Bridge.class);
         guiceBridge.bridgeGuiceInjector(injector);
