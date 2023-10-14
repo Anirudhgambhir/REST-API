@@ -28,7 +28,7 @@ public class TaskManagementResource {
 
     private final TaskManagementService service;
 
-    private final static Validator<Object> validator = new ObjectValidatorImpl();
+    private final Validator<Object> validator;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)

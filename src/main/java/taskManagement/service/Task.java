@@ -2,8 +2,8 @@ package taskManagement.service;
 
 import lombok.Getter;
 import taskManagement.validator.Validator;
-import taskManagement.validator.impl.TaskUpdateValidatorImpl;
 
+import javax.inject.Inject;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -16,7 +16,8 @@ public class Task {
     private final boolean completed;
 
 
-    private final Validator<TaskUpdate> validator = new TaskUpdateValidatorImpl();
+    @Inject
+    private Validator<TaskUpdate> validator;
 
 
     private Task(TaskBuilder builder){

@@ -37,7 +37,7 @@ public class MongoDBTaskManagementRepository implements TaskManagementRepository
         FindIterable<MongoDBTask> mongoDBTasks = tasksCollection.find();
 
         List<Task> tasks = new ArrayList<>();
-        for (MongoDBTask mongoDBTask: mongoDBTasks) {
+        for (MongoDBTask mongoDBTask : mongoDBTasks) {
             tasks.add(fromMongoDBTask(mongoDBTask));
         }
 
