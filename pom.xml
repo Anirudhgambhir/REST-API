@@ -7,6 +7,7 @@
     <groupId>org.example</groupId>
     <artifactId>RESTAPI</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -81,7 +82,7 @@
                     <extraJvmArguments>--add-opens java.base/java.lang=ALL-UNNAMED</extraJvmArguments>
                     <programs>
                         <program>
-                            <mainClass>RESTAPI.Launcher</mainClass>
+                            <mainClass>taskManagement.guice.Application</mainClass>
                             <id>RESTAPI_webapp</id>
                         </program>
                     </programs>
